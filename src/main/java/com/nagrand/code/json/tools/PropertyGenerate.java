@@ -45,7 +45,9 @@ public class PropertyGenerate {
             boolean flag = field.isAccessible();
             try {
                 field.setAccessible(true);
-
+                if(field.getType().getTypeName().equals("java.util.Date")){
+                    System.out.println("date");
+                }
                 if (basicProperty.contains(field.getType().getTypeName())) {
                     setPropertyByType(o, field);
                 } else {
@@ -56,6 +58,7 @@ public class PropertyGenerate {
                 }
 
             } catch (Exception e) {
+                System.out.println(e);
 
             }
             field.setAccessible(flag);
